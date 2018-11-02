@@ -1,0 +1,24 @@
+.documentation__groups {
+    line-height: 2.5;
+    font-size: 1.1em;
+    color: rgba(0, 0, 0, .65);
+    max-width: 260px;
+    text-overflow: ellipsis;
+}
+
+.documentation__groups__title {}
+
+.documentation__groups__method {
+    margin-left: 1.4rem;
+}
+
+.documentation__groups__title,
+.documentation__groups__method {
+    cursor: pointer;
+}
+
+.documentation__groups__title:hover,
+.documentation__groups__method:hover {
+    color: rgba(0, 0, 0, .87);
+    text-decoration: underline;
+}

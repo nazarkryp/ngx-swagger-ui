@@ -1,0 +1,8 @@
+<div class="documentation__groups">
+    <div *ngFor="let group of documentation?.groups;">
+        <a class="documentation__groups__title">{{group.name}} ({{group.methods.length}})</a>
+        <div *ngFor="let method of group.methods;">
+            <a class="documentation__groups__method" >{{method.operationId}}</a>
+        </div>
+    </div>
+</div>

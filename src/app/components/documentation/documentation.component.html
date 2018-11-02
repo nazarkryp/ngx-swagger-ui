@@ -1,0 +1,29 @@
+<header class="documentation__header">
+    <h1>Introduction</h1>
+</header>
+<main>
+    <div class="documentation__group" *ngFor="let group of documentation?.groups">
+        <h2>{{group.name}}</h2>
+        <div class="documentation__group__methods">
+            <div class="documentation__group__method" *ngFor="let method of group.methods">
+                <!-- {{method | json}} -->
+                <span class="documentation__method__title">{{method.operationId}}</span>
+                <span class="documentation__method__description">{{method.description}}</span>
+                <div class="documentation__method__endpoint">
+                    <div class="documentation__method__endpoint__type">
+                        {{method.method}}
+                    </div>
+                    <span class="documentation__method__endpoint__address">
+                        {{method.endpoint}}
+                    </span>
+                </div>
+                <div class="documentation__method__response__container">
+                    <div class="documentation__method__response" *ngFor="let response of method.responses" [hidden]="!response.schema">
+                        <!-- {{response | json}} -->
+                        <pre class="documentation__method__response__json" [innerHTML]="response.schema" *ngIf="response.schema"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
