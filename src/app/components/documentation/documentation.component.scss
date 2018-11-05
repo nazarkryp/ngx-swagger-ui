@@ -3,23 +3,32 @@
 }
 
 .documentation__group {
-    padding: 1.4rem;
+    // padding: 1.4rem;
     margin-bottom: 2.8rem;
-    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .26);
+    // box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .26);
     border-radius: 2px;
     line-height: 2;
 }
 
+.documentation__group__title {
+    padding-bottom: 1.4rem;
+    text-transform: uppercase;
+}
+
 .documentation__group__method {
-    padding: 1.4rem;
-    border: 1px solid #eaeaea;
-    border-radius: 2px;
-    margin-bottom: 1.4rem;
+    // padding: 1.4rem;
+    // border: 1px solid #eaeaea;
+    // border-radius: 2px;
+    margin-bottom: 2.8rem;
 }
 
 .documentation__method__title {
-    font-size: 1.1em;
+    font-size: 1.3em;
     display: block;
+    margin-bottom: .75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    // border-bottom: 1px solid #eaeaea;
 }
 
 .documentation__method__description {
@@ -32,30 +41,74 @@
     display: flex;
     flex-direction: row;
     place-content: center start;
-    background-color: rgba(46, 181, 150, .26);
-    margin-bottom: 1.4rem;
+    margin-bottom: 2.8rem;
     line-height: 1;
+    box-sizing: border-box;
+}
+
+.documentation__method__endpoint.--get {
+    background-color: rgba(34, 182, 150, .16);
+    color: rgba(34, 182, 150, .87);
+}
+
+.documentation__method__endpoint__type.--get {
+    background-color: rgb(34, 182, 150);
+}
+
+.documentation__method__endpoint.--post {
+    background-color: rgba(255, 69, 0, .16);
+    color: rgba(255, 69, 0, .87);
+}
+
+.documentation__method__endpoint__type.--post {
+    background-color: rgb(255, 69, 0);
+}
+
+.documentation__method__endpoint.--put {
+    background-color: rgba(255, 166, 0, .16);
+    color: orange;
+}
+
+.documentation__method__endpoint__type.--put {
+    background-color: orange;
+}
+
+.documentation__method__endpoint.--delete {
+    color: darkred;
+    background-color: rgba(139, 0, 0, .16);
+}
+
+.documentation__method__endpoint__type.--delete {
+    background-color: crimson;
+}
+
+.documentation__method__endpoint.--patch {
+    background-color: rgba(128, 128, 0, .16);
+    color: olive;
+}
+
+.documentation__method__endpoint__type.--patch {
+    background-color: olive;
 }
 
 .documentation__method__endpoint__type {
-    background-color: rgb(46, 181, 150);
     color: rgba(255, 255, 255, .87);
     text-transform: uppercase;
     width: 75px;
     font-weight: bold;
     text-align: center;
-    border-radius: 2px;
+    border-radius: 2px 0 0 2px;
     padding: .75rem;
 }
 
 .documentation__method__endpoint__address {
     padding: .75rem;
-    color: rgb(46, 181, 150);
+    // color: rgb(46, 181, 150);
 }
 
 .documentation__method__response {
     border-radius: 2px;
-    background-color: #eaeaea;
+    background-color: rgb(250, 250, 250);
     padding: .75rem;
     margin-bottom: 1.4rem;
 }
@@ -63,5 +116,31 @@
 .documentation__method__response__json {
     margin: 0;
     padding: 0;
-    line-height: 2;
+    line-height: 1.5;
+}
+
+.documentation__method__parameters__container {
+    padding-bottom: 1.4rem;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+}
+
+tr,
+td {
+    padding: 0;
+    vertical-align: sub;
+}
+
+// .documentation__method__parameter--required {
+//     padding: .25rem;
+//     background: green;
+//     border-radius: 2px;
+//     color: rgba(255, 255, 255, .87);
+// }
+
+.documentation__method__parameter--required {
+    font-weight: bold;
 }

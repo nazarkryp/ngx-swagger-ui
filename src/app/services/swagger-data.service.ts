@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DocumentationResponse } from 'app/models/response';
-import { Method, Documentation, MethodGroup } from 'app/models/documentation';
+import { Method, Documentation, MethodGroup, Parameter } from 'app/models/documentation';
 import { Response } from 'app/models/documentation/response';
 
 @Injectable({
@@ -20,6 +20,8 @@ export class SwaggerDataService {
             .pipe(map(response => {
                 const documentation = new Documentation();
 
+                documentation.info = response.info;
+                documentation.swagger = response.swagger;
                 documentation.groups = this.parseGroups(response.paths, response);
 
                 // swagger.methods = this.parseMethods(response);
@@ -73,6 +75,7 @@ export class SwaggerDataService {
             method.endpoint = endpoint;
             method.method = e.methodType;
             method.description = e.summary;
+            method.parameters = this.mapParameters(e.parameters);
 
             const responseCodes = Object.keys(e.responses);
             method.responses = responseCodes.map(code => {
@@ -82,39 +85,19 @@ export class SwaggerDataService {
                 response.code = +code;
                 response.description = r.description;
 
-                if (r.schema && r.schema['$ref']) {
-                    response.schema = this.mapResponse(r.schema['$ref'], documentationResponse);
+                if (r.schema) {
+                    response.schema = this.mapDefinitions(r.schema, documentationResponse);
                 }
+
+                // if (r.schema && r.schema['$ref']) {
+                //     response.schema = this.mapResponse(r.schema['$ref'], documentationResponse);
+                // }
 
                 return response;
             });
 
             return method;
         });
-
-        // const paths = Object.keys(documentation.paths);
-        // return paths.map(pathKey => {
-        //     const path = documentation.paths[pathKey];
-        //     const innerMethods = Object.keys(path);
-
-        //     return innerMethods.map(methodName => {
-        //         const operation = path[methodName];
-
-        //         return this.parseOperation(pathKey, methodName, operation);
-        //     });
-        // }).reduce((pn, u) => [...pn, ...u], []);
-    }
-
-    private parseOperation(endpoint: string, method: string, operation: any): Method {
-        const swaggerMethod = new Method();
-
-        swaggerMethod.endpoint = endpoint;
-        swaggerMethod.method = method;
-        swaggerMethod.operationId = operation.operationId.split('_')[1];
-        // swaggerMethod.group = operation.operationId.split('_')[0];
-        swaggerMethod.parameters = operation.parameters;
-
-        return swaggerMethod;
     }
 
     private distinct(value, index, self) {
@@ -131,5 +114,39 @@ export class SwaggerDataService {
         const properties = JSON.stringify(definition.properties, null, 4);
 
         return properties;
+    }
+
+    private mapParameters(parameters: any[]): Parameter[] {
+        return parameters.map(e => {
+            const parameter = new Parameter();
+
+            parameter.name = e.name;
+            parameter.in = e.in;
+            parameter.description = e.description;
+            parameter.required = e.required;
+            parameter.type = e.number;
+            parameter.format = e.format;
+            parameter.schema = e.schema;
+
+            return parameter;
+        });
+    }
+
+    private mapDefinitions(property: any, documentation: DocumentationResponse) {
+        const keys = Object.keys(property);
+
+        keys.forEach(key => {
+            if (key === '$ref') {
+                const refArr = property[key].split('/');
+                const refKey = refArr[refArr.length - 1];
+                const definition = documentation.definitions[refKey].properties;
+                property[key] = definition;
+                this.mapDefinitions(definition, documentation);
+            } else {
+                // result[key] = property[key];
+            }
+
+            this.mapDefinitions(property[key], documentation);
+        });
     }
 }

@@ -48,13 +48,13 @@
     <mat-sidenav class="sidenav-container__sidenav" opened mode="side">
         <div class="sidenav-container__sidenav__content">
             <header class="sidenav-container__sidenav__header">
-                <h1>API Docs</h1>
+                <h1>{{documentation?.info?.title}}</h1>
             </header>
             <app-methods-filter [documentation]="documentation"></app-methods-filter>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div style="background: white; padding: 1.4rem; min-height: 100vh; box-sizing: border-box;">
+        <div style="padding: 1.4rem 2.8rem; height: 100vh; box-sizing: border-box;">
             <app-documentation [documentation]="documentation"></app-documentation>
         </div>
     </mat-sidenav-content>

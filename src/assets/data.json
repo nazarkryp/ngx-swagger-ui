@@ -1,0 +1,18 @@
+{
+    "200": {
+        "description": "OK",
+        "schema": {
+            "$ref": "#/definitions/DataResult[BranchAssignationResult]"
+        }
+    },
+    "DataResult[BranchAssignationResult]": {
+        "description": "Represents generic data result.",
+        "type": "object",
+        "properties": {
+            "data": {
+                "$ref": "#/definitions/BranchAssignationResult",
+                "description": "Data."
+            }
+        }
+    }
+}

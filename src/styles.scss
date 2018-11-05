@@ -11,3 +11,50 @@ body {
 .mat-drawer-side {
     border-right: none !important;
 }
+
+.mat-icon.mat-18 {
+    font-size: 18px !important;
+    height: 18px !important;
+    width: auto;
+    max-width: 18px !important;
+    line-height: 18px !important;
+}
+
+.mat-icon.mat-24 {
+    font-size: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    width: auto;
+}
+
+.mat-icon.mat-36 {
+    font-size: 36px !important;
+    height: 36px !important;
+    width: auto;
+    max-width: 36px !important;
+    line-height: 36px !important;
+}
+
+.mat-icon.mat-48 {
+    font-size: 48px !important;
+    height: 48px !important;
+    width: auto;
+    max-width: 48px !important;
+    line-height: 48px !important;
+}
+
+.mat-icon.mat-72 {
+    font-size: 72px !important;
+    height: 72px !important;
+    width: auto;
+    max-width: 72px !important;
+    line-height: 72px !important;
+}
+
+.mat-icon.mat-18.thin svg,
+.mat-icon.mat-24.thin svg,
+.mat-icon.mat-36.thin svg,
+.mat-icon.mat-48.thin svg,
+.mat-icon.mat-72.thin svg {
+    stroke-width: .9px;
+}
