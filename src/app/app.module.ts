@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { MethodsFilterComponent } from './components/shared/methods-filter/methods-filter.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { FormatJsonPipe } from './pipes/format-json.pipe';
+import { BodyComponent } from './components/shared/body/body.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MethodsFilterComponent,
         DocumentationComponent,
-        FormatJsonPipe
+        FormatJsonPipe,
+        BodyComponent
     ],
     imports: [
         BrowserModule,
@@ -22,7 +24,9 @@ import { FormatJsonPipe } from './pipes/format-json.pipe';
         FlexLayoutModule,
         AppMaterialModule
     ],
-    providers: [],
+    entryComponents: [
+        BodyComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

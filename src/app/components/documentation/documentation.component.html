@@ -1,17 +1,23 @@
-<header class="documentation__header">
-    <h1>Introduction</h1>
-</header>
-<main>
-    <div class="documentation__group" *ngFor="let group of documentation?.groups">
-        <h2 class="documentation__group__title">{{group.name}}</h2>
-        <div class="documentation__group__methods">
-            <div class="documentation__group__method" *ngFor="let method of group.methods">
+<div class="documentation__group" *ngFor="let group of documentation?.groups">
+    <header class="documentation__group__header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="documentation__group__header__title">
+            <h2>{{group.name}}</h2>
+        </div>
+        <div class="documentation__group__header__expander" fxLayout="row" fxLayoutAlign="end center">
+            <button mat-icon-button>
+                <mat-icon>expand_more</mat-icon>
+            </button>
+        </div>
+    </header>
+    <div *ngFor="let method of group?.methods" fxLayout="column">
+        <div class="documentation__group__method">
+            <div class="documentation__method__details">
                 <div fxLayout="row" fxLayoutAlign="space-between center">
                     <span class="documentation__method__title">{{method.description}}</span>
                 </div>
                 <div [className]="'documentation__method__endpoint ' + '--' + method.method">
                     <div [className]="'documentation__method__endpoint__type ' + '--' + method.method">
-                        {{method.method}}
+                        <span>{{method.method}}</span>
                     </div>
                     <span class="documentation__method__endpoint__address">
                         {{method.endpoint}}
@@ -22,44 +28,68 @@
                     <table>
                         <thead width="100%">
                             <th width="15%">NAME</th>
+                            <th width="15%">TYPE</th>
                             <th width="15%">REQUIRED</th>
                             <th width="50%">DESCRIPTION</th>
                         </thead>
                         <tbody>
                             <tr *ngFor="let parameter of method.parameters">
-                                <td>
-                                    <span [ngClass]="{'documentation__method__parameter--required' : parameter.required}">{{parameter.name}}</span>
+                                <td colspan="4">
+                                    <table>
+                                        <tr>
+                                            <td width="15%">
+                                                <span [ngClass]="{'documentation__method__parameter--required' : parameter.required}">{{parameter.name}}</span>
+                                            </td>
+                                            <td width="15%">
+                                                <span style="font-style: italic; color: rgba(0,0,0,.65); cursor: pointer;"
+                                                    (click)="openBody(parameter)">
+                                                    {{parameter.type || parameter.in}}
+                                                </span>
+                                            </td>
+                                            <td width="15%">
+                                                <mat-icon class="mat-18" *ngIf="parameter.required">check</mat-icon>
+                                            </td>
+                                            <td width="50%">{{parameter.description}}</td>
+                                        </tr>
+                                        <tr *ngIf="parameter.schema">
+                                            <td colspan="4">
+                                                <pre class="documentation__method__parameter__body" [innerHTML]="parameter.schema"></pre>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
-                                <td>
-                                    <mat-icon class="mat-18" *ngIf="parameter.required">check</mat-icon>
-                                </td>
-                                <td>{{parameter.description}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="documentation__method__response__container">
-                    <div>
-                        <header>
-                            <h3>SUCCESSFULL RESPONSE</h3>
-                        </header>
-                        <div class="documentation__method__response" *ngFor="let response of method.responses" [hidden]="!response.schema">
-                            <!-- <pre class="documentation__method__response__json" [innerHTML]="response.schema" *ngIf="response.schema"></pre> -->
-                            {{response.schema | json}}
+                <div *ngIf="method.scopes?.length">
+                    <h3>SCOPES</h3>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let scope of method.scopes;">{{scope}}</mat-chip>
+                    </mat-chip-list>
+
+                </div>
+            </div>
+            <div class="documentation__method__response__container">
+                <div>
+                    <header class="documentation__method__response__header">
+                        <h3>SUCCESSFULL RESPONSE</h3>
+                    </header>
+                    <div class="documentation__method__response" *ngFor="let response of method.responses" [hidden]="!response.schema">
+                        <pre class="documentation__method__response__json" [innerHTML]="response.schema" *ngIf="response.schema && response.code === 200"></pre>
+                    </div>
+                </div>
+                <div>
+                    <header>
+                        <h3>RESPONSE CODES</h3>
+                    </header>
+                    <main>
+                        <div *ngFor="let response of method.responses">
+                            <strong>{{response.code}}</strong> - {{response.description}}
                         </div>
-                    </div>
-                    <div>
-                        <header>
-                            <h3>RESPONSE CODES</h3>
-                        </header>
-                        <main>
-                            <div *ngFor="let response of method.responses">
-                                {{response.code}} - {{response.description}}
-                            </div>
-                        </main>
-                    </div>
+                    </main>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>

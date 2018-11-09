@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatInputModule,
         MatIconModule,
         MatSidenavModule,
-        MatRippleModule
+        MatRippleModule,
+        MatChipsModule,
+        MatDialogModule
     ],
     exports: [
         CommonModule,
@@ -35,7 +39,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatInputModule,
         MatIconModule,
         MatSidenavModule,
-        MatRippleModule
+        MatRippleModule,
+        MatChipsModule,
+        MatDialogModule
     ]
 })
 export class AppMaterialModule { }

@@ -1,7 +1,10 @@
 html {
-    font: 14px 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     color: rgba(0, 0, 0, 87);
     height: 100%;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 300;
 }
 
 body {
@@ -57,4 +60,13 @@ body {
 .mat-icon.mat-48.thin svg,
 .mat-icon.mat-72.thin svg {
     stroke-width: .9px;
+}
+
+.dialog-container .mat-dialog-container {
+    // box-shadow: 0 0px 0px 0px rgba(0, 0, 0, .2), 0 10px 10px -10px rgba(0, 0, 0, .14), 0 0px 50px 10px rgba(0, 0, 0, .12);
+    padding: 0;
+}
+
+.dialog-backdrop {
+    background: rgba(255, 255, 255, .7);
 }

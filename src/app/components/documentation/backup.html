@@ -1,0 +1,67 @@
+<main class="documentation__main">
+    <div class="documentation__group" *ngFor="let group of documentation?.groups">
+        <header class="documentation__group__header">
+            <h2 class="documentation__group__title">
+                {{group.name}}
+            </h2>
+        </header>
+        <div class="documentation__group__methods">
+            <div class="documentation__group__method" *ngFor="let method of group.methods">
+                <div class="documentation__method__details">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <span class="documentation__method__title">{{method.description}}</span>
+                    </div>
+                    <div [className]="'documentation__method__endpoint ' + '--' + method.method">
+                        <div [className]="'documentation__method__endpoint__type ' + '--' + method.method">
+                            {{method.method}}
+                        </div>
+                        <span class="documentation__method__endpoint__address">
+                            {{method.endpoint}}
+                        </span>
+                    </div>
+                    <div class="documentation__method__parameters__container">
+                        <h3>PARAMETERS</h3>
+                        <table>
+                            <thead width="100%">
+                                <th width="15%">NAME</th>
+                                <th width="15%">REQUIRED</th>
+                                <th width="50%">DESCRIPTION</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let parameter of method.parameters">
+                                    <td>
+                                        <span [ngClass]="{'documentation__method__parameter--required' : parameter.required}">{{parameter.name}}</span>
+                                    </td>
+                                    <td>
+                                        <mat-icon class="mat-18" *ngIf="parameter.required">check</mat-icon>
+                                    </td>
+                                    <td>{{parameter.description}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="documentation__method__response__container">
+                    <div>
+                        <header class="documentation__method__response__header">
+                            <h3>SUCCESSFULL RESPONSE</h3>
+                        </header>
+                        <div class="documentation__method__response" *ngFor="let response of method.responses" [hidden]="!response.schema">
+                            <pre class="documentation__method__response__json" [innerHTML]="response.schema" *ngIf="response.schema && response.code === 200"></pre>
+                        </div>
+                    </div>
+                    <div>
+                        <header>
+                            <h3>RESPONSE CODES</h3>
+                        </header>
+                        <main>
+                            <div *ngFor="let response of method.responses">
+                                <strong>{{response.code}}</strong> - {{response.description}}
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

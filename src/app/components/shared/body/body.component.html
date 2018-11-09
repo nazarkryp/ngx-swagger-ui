@@ -1,0 +1,7 @@
+<header fxLayout="column" style="padding: .75rem .75rem 1.4rem .75rem;">
+    <span style="font-weight: bold; padding-bottom: .75rem; display: block;">{{parameter.name}}</span>
+    <span style="font-weight: lighter; color: rgba(0, 0, 0, .65);">{{parameter.description}}</span>
+</header>
+<main style="padding: 0 .75rem .75rem .75rem;">
+    <pre style="background: #fafafa; border-radius: 2px; padding: .75rem" [innerHTML]="parameter.schema"></pre>
+</main>

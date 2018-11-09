@@ -1,61 +1,18 @@
-<!-- <header class="header">
-    <div class="header__container">
-        <h2>API Reference</h2>
-        <button mat-flat-button color="primary">Authorize</button>
-    </div>
-</header> -->
-<!-- <main class="main">
-    <div class="container">
-        <div>
-            <div *ngFor="let method of swagger?.methods" style="padding: .75rem 0;">
-                <div style="width: 100%;">
-                    <div style="width: 100%;" fxLayout="row" fxLayoutAlign="space-between center">
-                        <div fxLayout="row" fxLayoutAlign="start center" style="width: 100%;">
-                            <div class="method__label" [className]="'method__label ' + 'method__label--' + method.method">
-                                <span>{{method.method}}</span>
-                            </div>
-                            {{method.operationId}}
-                        </div>
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                    </div>
-                    <div style="margin-top: .75rem; padding: 1.4rem; border: 1px solid #eaeaea; border-radius: 5px; box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.26);">
-                        <div class="method__parameter" *ngFor="let parameter of method.parameters">
-                            <div fxLayout="row">
-                                <div style="width: 200px;">
-                                    {{parameter.name}}
-                                </div>
-                                <div>
-                                    <input class="method__parameter__query" type="text" placeholder="{{parameter.type}}"
-                                        *ngIf="parameter.in === 'path' || parameter.in === 'query'">
-                                    <textarea class="method__parameter__query" rows="10" *ngIf="parameter.in !== 'path' && parameter.in !== 'query'"></textarea>
-                                    {{parameter | json}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main> -->
-<!-- <footer class="footer">
-    <div class="header__container">
-        <span>Copyright © 2018</span>
-    </div>
-</footer> -->
-
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav class="sidenav-container__sidenav" opened mode="side">
         <div class="sidenav-container__sidenav__content">
-            <header class="sidenav-container__sidenav__header">
-                <h1>{{documentation?.info?.title}}</h1>
+            <header class="sidenav-container__sidenav__header" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="menu__button">menu</mat-icon>
+                <h1 class="documentation__title">{{documentation?.info?.title}}</h1>
             </header>
-            <app-methods-filter [documentation]="documentation"></app-methods-filter>
+            <main>
+                <app-methods-filter [documentation]="documentation" *ngIf="documentation"></app-methods-filter>
+            </main>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div style="padding: 1.4rem 2.8rem; height: 100vh; box-sizing: border-box;">
-            <app-documentation [documentation]="documentation"></app-documentation>
+        <div class="documentation__container">
+            <app-documentation [documentation]="documentation" *ngIf="documentation"></app-documentation>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -8,4 +8,5 @@ export class Method {
     public operationId: string;
     public parameters: Parameter[];
     public responses: Response[];
+    public scopes: string[];
 }

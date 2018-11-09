@@ -2,11 +2,9 @@
     line-height: 2.5;
     font-size: 1.1em;
     color: rgba(0, 0, 0, .65);
-    max-width: 260px;
-    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
 }
-
-.documentation__groups__title {}
 
 .documentation__groups__method {
     margin-left: 1.4rem;
@@ -15,6 +13,11 @@
 .documentation__groups__title,
 .documentation__groups__method {
     cursor: pointer;
+    text-overflow: ellipsis;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+
 }
 
 .documentation__groups__title:hover,
