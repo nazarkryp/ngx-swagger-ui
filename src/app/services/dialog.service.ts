@@ -15,12 +15,15 @@ export class DialogService {
             width: 'auto',
             maxHeight: 'calc(100vh - 1.4rem)',
             maxWidth: 'calc(100vw - 1.4rem)',
-            data: data,
             autoFocus: false,
             panelClass: 'dialog-container',
             backdropClass: 'dialog-backdrop',
             hasBackdrop: true
         };
+
+        if (data) {
+            config.data = data;
+        }
 
         return this.dialog.open(componentOrTemplateRef, config);
     }

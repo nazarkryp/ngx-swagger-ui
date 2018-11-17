@@ -13,11 +13,19 @@
 
 .documentation__group {
     border-radius: 2px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.documentation__group__header {
+    display: flex;
+    flex-direction: row;
 }
 
 .documentation__group__header__title {
-    width: 100%;
-    padding: 1.4rem 2.8rem;
+    width: 50%;
+    padding-left: 1.4rem;
+    padding-top: 1.4rem;
     box-sizing: border-box;
     text-transform: uppercase;
 }
@@ -25,12 +33,14 @@
 .documentation__group__header__expander {
     background-color: rgb(26, 38, 49);
     color: rgba(255, 255, 255, .87);
-    width: 100%;
-    padding: 1.4rem 2.8rem;
-    box-sizing: border-box;
+    width: 50%;
+    padding-top: .75rem;
+    padding-right: .75rem;
     display: flex;
+    flex-direction: row;
     place-content: center flex-end;
     align-items: center;
+    box-sizing: border-box;
 }
 
 
@@ -46,17 +56,9 @@
 }
 
 .documentation__method__details {
-    padding: 2.8rem;
+    padding: 2.8rem 1.4rem;
     box-sizing: border-box;
     width: 100%;
-}
-
-.documentation__method__response__container {
-    width: 100%;
-    padding: 2.8rem;
-    background-color: rgb(26, 38, 49);
-    color: rgba(255, 255, 255, .87);
-    box-sizing: border-box;
 }
 
 .documentation__method__title {
@@ -142,10 +144,18 @@
     // color: rgb(46, 181, 150);
 }
 
+.documentation__method__response__container {
+    width: 100%;
+    padding: 2.8rem 0;
+    background-color: rgb(26, 38, 49);
+    color: rgba(255, 255, 255, .87);
+    box-sizing: border-box;
+}
+
 .documentation__method__response {
     border-radius: 2px;
     background-color: rgb(21, 33, 45);
-    padding: .75rem;
+    padding: .75rem 1.4rem;
     margin-bottom: 1.4rem;
     position: relative;
     color: rgba(255, 255, 255, .87);
@@ -153,6 +163,8 @@
 
 .documentation__method__response__header {
     padding-bottom: .75rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
 }
 
 .documentation__method__response__json {

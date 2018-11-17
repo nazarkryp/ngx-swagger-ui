@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatSidenavModule,
         MatRippleModule,
         MatChipsModule,
-        MatDialogModule
+        MatDialogModule,
+        ScrollingModule
     ],
     exports: [
         CommonModule,
@@ -41,7 +43,8 @@ import { MatDialogModule } from '@angular/material/dialog';
         MatSidenavModule,
         MatRippleModule,
         MatChipsModule,
-        MatDialogModule
+        MatDialogModule,
+        ScrollingModule
     ]
 })
 export class AppMaterialModule { }

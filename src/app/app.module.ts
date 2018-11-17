@@ -9,6 +9,7 @@ import { MethodsFilterComponent } from './components/shared/methods-filter/metho
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { FormatJsonPipe } from './pipes/format-json.pipe';
 import { BodyComponent } from './components/shared/body/body.component';
+import { SigninComponent } from './components/shared/signin/signin.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { BodyComponent } from './components/shared/body/body.component';
         MethodsFilterComponent,
         DocumentationComponent,
         FormatJsonPipe,
-        BodyComponent
+        BodyComponent,
+        SigninComponent
     ],
     imports: [
         BrowserModule,
@@ -25,7 +27,9 @@ import { BodyComponent } from './components/shared/body/body.component';
         AppMaterialModule
     ],
     entryComponents: [
-        BodyComponent
+        BodyComponent,
+        SigninComponent,
+        DocumentationComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,26 @@
+<div style="width: 400px; height: 300px;">
+    <header style="padding: .75rem; display: flex; flex-direction: row; place-content: center space-between;">
+        <div>
+            <div>
+                <h1 style="padding-bottom: .75rem;">Ecosystem API</h1>
+                <span style="color: rgba(0,0,0,.65);">Sign in to continue</span>
+            </div>
+        </div>
+        <button mat-icon-button>
+            <mat-icon class="mat-18">clear</mat-icon>
+        </button>
+    </header>
+    <main style="padding: .75rem; display: flex; flex-direction: column;">
+        <mat-form-field color="accent" appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Type your username">
+        </mat-form-field>
+        <mat-form-field color="accent" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Type your Password">
+        </mat-form-field>
+    </main>
+    <footer style="display: flex; align-content: center; place-content: center flex-end; padding: .75rem;">
+        <button mat-flat-button color="accent" style="width: 100%;" (click)="signIn()">Sign In</button>
+    </footer>
+</div>

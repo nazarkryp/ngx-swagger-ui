@@ -9,4 +9,12 @@ import { Documentation } from 'app/models/documentation';
 export class MethodsFilterComponent {
     @Input('documentation')
     public documentation: Documentation;
+
+    public scrollTo(id: string) {
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.scrollIntoView();
+        }
+    }
 }

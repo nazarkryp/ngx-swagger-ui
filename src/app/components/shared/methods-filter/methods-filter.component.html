@@ -1,8 +1,8 @@
 <div class="documentation__groups">
     <div *ngFor="let group of documentation?.groups;">
-        <a class="documentation__groups__title">{{group.name}} ({{group.methods.length}})</a>
+        <a class="documentation__groups__title" (click)="scrollTo(group.name)">{{group.name}} ({{group.methods.length}})</a>
         <div class="documentation__groups__method" *ngFor="let method of group.methods;">
-            <a [title]="method.operationId">{{method.operationId}}</a>
+            <a [title]="method.operationId" (click)="scrollTo(method.operationId)">{{method.operationId}}</a>
         </div>
     </div>
 </div>

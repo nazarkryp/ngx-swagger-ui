@@ -226,7 +226,6 @@ export class SwaggerDataService {
 
     private mapResponseDefinitions(definitions: any): any {
         const definitionsKeys = Object.keys(definitions);
-        console.log(`Definitions count: ${definitionsKeys.length}`);
 
         definitionsKeys.forEach(key => {
             this.parseDefition(key, definitions);
@@ -236,12 +235,6 @@ export class SwaggerDataService {
 
         definitionsKeys.forEach(key => {
             result[key] = definitions[key];
-
-            // console.log(key);
-            // if (key == 'DetailedLearningObjectModel') {
-            //     debugger;
-            //     const data = result[key];
-            // }
         });
 
         return result;
